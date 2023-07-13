@@ -1,16 +1,17 @@
 import styled from "styled-components";
 import bg from "./img/bg.png";
 import { MainLayout } from "./styles/Layouts"; //main layout style
-import Orb from "./components/Orb/Orb"; //design to float in the background
+// import Orb from "./components/Orb/Orb"; //design to float in the background
+import Navigation from "./components/Navigation/Navigation";
 
 function App() {
   return (
     <AppStyled bg={bg}>
-      <Orb>
-        <MainLayout>
-          <h1>Hello</h1>
-        </MainLayout>
-      </Orb>
+      {/* <Orb> */}
+      <MainLayout>
+        <Navigation /> {/* navigation component */}
+      </MainLayout>
+      {/* </Orb> */}
     </AppStyled>
   );
 }

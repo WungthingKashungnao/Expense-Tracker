@@ -22,6 +22,7 @@ export const GlobalStyle = createGlobalStyle`
 // custom variable end
 body{
     font-family: 'Nunito', sans-serif;
+    /* minimum font size 1rem and max font size is 1.2rem */
     font-size: clamp(1rem, 1.5vw, 1.2rem);
     overflow: hidden;
     color: rgba(34, 34, 96, .6);
