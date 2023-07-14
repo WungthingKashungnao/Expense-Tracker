@@ -1,10 +1,9 @@
-import React from "react";
 import styled from "styled-components";
 import avatar from "../../img/avatar.png"; //importing image
 import { menuItems } from "../../utils/menuItems";
 import { signout } from "../../utils/Icons";
 
-const Navigation = () => {
+const Navigation = ({ active, setActive }) => {
   return (
     <NavStyled>
       {/* user container start */}
@@ -22,7 +21,12 @@ const Navigation = () => {
       <ul className="menu-items">
         {menuItems.map((item) => {
           return (
-            <li key={item.id}>
+            <li
+              key={item.id}
+              onClick={() => setActive(item.id)}
+              // if active state matches item.id, set it to class active
+              className={active === item.id ? "active" : ""}
+            >
               {item.icon}
               <span>{item.title}</span>
             </li>
@@ -94,6 +98,24 @@ const NavStyled = styled.nav`
         font-size: 1.4rem;
         transition: all 0.4s ease-in-out;
       }
+    }
+  }
+
+  .active {
+    color: rgba(34, 34, 96, 1) !important;
+    i {
+      color: rgba(34, 34, 96, 1) !important;
+    }
+    /* pseudo element styling */
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: #222260;
+      border-radius: 0 10px 10px 0;
     }
   }
 `;
