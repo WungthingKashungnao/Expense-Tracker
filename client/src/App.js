@@ -7,9 +7,12 @@ import { useMemo, useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import Income from "./components/Income/Income";
 import Dashboard from "./components/Dashboard/Dashboard";
+import { useGlobalContext } from "./context/globalContext";
 
 function App() {
   const [active, setActive] = useState(1); //state for active status of menu items
+  const global = useGlobalContext(); //assigning useGlobalContext
+
   // wer are using useMemo here because i want to save the effect to the memory, so that the effect wont reload every time the page reloads
   const orbMemo = useMemo(() => {
     return <Orb />;
