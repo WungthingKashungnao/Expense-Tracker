@@ -8,7 +8,7 @@ import Button from "../Button/Button";
 import { plus } from "../../utils/Icons";
 
 const Form = () => {
-  const { addIncome } = useGlobalContext(); //extracting function from the useGlobalContext
+  const { addIncome, getIncomes } = useGlobalContext(); //extracting function from the useGlobalContext
   const [inputState, setInputState] = useState({
     title: "",
     amount: "",
@@ -27,6 +27,7 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addIncome(inputState); //sending data to the useGlobalContext
+    getIncomes();
   };
 
   return (
