@@ -43,7 +43,7 @@ const IncomeItem = ({
         return freelance;
       case "investments":
         return stocks;
-      case stocks:
+      case "stocks":
         return users;
       case "bitcoin":
         return bitcoin;
@@ -92,7 +92,9 @@ const IncomeItem = ({
         <h5>{title}</h5>
         <div className="inner-content">
           <div className="text">
-            <p>{dollar} 45</p>
+            <p>
+              {dollar} {amount}
+            </p>
             <p>
               {calender} {date}
             </p>
@@ -110,7 +112,7 @@ const IncomeItem = ({
               color={"#fff"}
               iColor={"#fff"}
               hColor={"var(--color-green)"}
-              //   onClick={() => handleDelte(id)}
+              onClick={() => deleteItem(id)}
             />
           </div>
         </div>
