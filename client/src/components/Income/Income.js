@@ -29,7 +29,7 @@ const Income = () => {
           {/* incomes container start */}
           <div className="incomes">
             {incomes.map((income) => {
-              const { _id, title, amount, date, category, description } =
+              const { _id, title, type, amount, date, category, description } =
                 income; //destructuring data
 
               return (
@@ -43,6 +43,7 @@ const Income = () => {
                   category={category}
                   indicatorColor="var(--color-green)"
                   deleteItem={deleteIncome}
+                  type={type}
                 />
               );
             })}
