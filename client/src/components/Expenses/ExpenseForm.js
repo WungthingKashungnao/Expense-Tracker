@@ -8,7 +8,7 @@ import Button from "../Button/Button";
 import { plus } from "../../utils/Icons";
 
 const ExpenseForm = () => {
-  const { addExpense, getExpenses } = useGlobalContext(); //extracting function from the useGlobalContext
+  const { addExpense, getExpenses, error, setError } = useGlobalContext(); //extracting function from the useGlobalContext
   const [inputState, setInputState] = useState({
     title: "",
     amount: "",
@@ -22,6 +22,7 @@ const ExpenseForm = () => {
   const handleInput = (name) => (e) => {
     // updating the inputState based on the data recieved, [name] is an object, it can be any of the elements of inputState
     setInputState({ ...inputState, [name]: e.target.value });
+    setError(""); //once i start typing i want the error message to dissappear
   };
 
   const handleSubmit = (e) => {
@@ -39,6 +40,9 @@ const ExpenseForm = () => {
 
   return (
     <ExpenseFormStyled onSubmit={handleSubmit}>
+      {error && <p className="error">{error}</p>}
+      {/*this line will display message when there is an error*/}
+
       {/*input for the title */}
       <div className="input-control">
         <input
@@ -49,7 +53,6 @@ const ExpenseForm = () => {
           onChange={handleInput("title")}
         />
       </div>
-
       {/* input for the amount */}
       <div className="input-control">
         <input
@@ -61,7 +64,6 @@ const ExpenseForm = () => {
           onChange={handleInput("amount")}
         />
       </div>
-
       {/* input for the dates */}
       <div className="input-control">
         {/* DatePicker is from an external package */}
@@ -75,7 +77,6 @@ const ExpenseForm = () => {
           }}
         />
       </div>
-
       {/* options for input */}
       <div className="selects input-control">
         <select
@@ -101,7 +102,6 @@ const ExpenseForm = () => {
           <option value="other">Other</option>
         </select>
       </div>
-
       {/* description  */}
       <div className="input-control">
         <textarea
@@ -114,7 +114,6 @@ const ExpenseForm = () => {
           onChange={handleInput("description")}
         ></textarea>
       </div>
-
       <div className="submit-btn">
         <Button
           name={"Add Expense"}
